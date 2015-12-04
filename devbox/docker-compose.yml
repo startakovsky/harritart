@@ -1,0 +1,25 @@
+development:
+  build: .
+  #command: python app.py
+  ports:
+   - "8888:8888"
+  volumes:
+   - ~/Dropbox/myWork/code/shared/:/home/jovyan/work/shared
+   - ~/Documents/packages/:/home/jovyan/work/packages
+  links:
+   - some-redis
+   - some-postgis
+  environment:
+   - GRANT_SUDO=yes
+  privileged: true
+
+some-redis:
+  image: redis
+
+some-postgis:
+  image: kartoza/postgis
+  #volumes:
+  # - ~/Dropbox/myWork/data/postgres_data/:/var/lib/postgresql
+  environment:
+   - POSTGRES_USER=docker
+   - POSTGRES_PASS=docker
