@@ -11,7 +11,6 @@ main:
   working_dir: /home/jovyan/work/packages/kaggle-digit-recognizer
   environment:
    - GRANT_SUDO=yes
-   - PYTHONPATH=/home/jovyan/work/packages/boost_ds
    - ENVIRONMENT=development
   privileged: true
   log_driver: json-file
