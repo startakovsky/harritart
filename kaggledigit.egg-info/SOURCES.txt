@@ -1,0 +1,5 @@
+kaggledigit.egg-info/PKG-INFO
+kaggledigit.egg-info/SOURCES.txt
+kaggledigit.egg-info/dependency_links.txt
+kaggledigit.egg-info/requires.txt
+kaggledigit.egg-info/top_level.txt

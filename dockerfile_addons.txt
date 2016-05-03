@@ -1,0 +1,48 @@
+# PYMC3
+RUN ["/bin/bash", "-c", "source activate python2 && \
+git clone https://github.com/pymc-devs/pymc3.git -b master"]
+WORKDIR pymc3
+RUN ["/bin/bash", "-c", "source activate python2 && \
+python setup.py install"]
+WORKDIR /home/jovyan/work
+RUN rm -r pymc3
+
+
+# Tensorflow
+RUN ["/bin/bash", "-c", "source activate python2 && \
+pip install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.5.0-cp27-none-linux_x86_64.whl && \
+source deactivate"]
+
+
+# parallelization
+RUN ["/bin/bash", "-c", "source activate python2 && \
+pip install ipyparallel && \
+source deactivate"]
+
+
+#snowflake connector
+RUN ["/bin/bash", "-c", "source activate python2 && \
+apt-get install -y libffi-dev && \
+pip install snowflake-connector-python && \
+pip uninstall -y cryptography && \
+pip install cryptography && \
+source deactivate"]
+
+
+#Time Series / TA - LIB
+RUN ["/bin/bash", "-c", "source activate python2 && \
+wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+tar -xzf ta-lib-0.4.0-src.tar.gz && \
+cd ta-lib && \
+./configure --prefix=/usr && \
+make && \
+sudo make install && \
+pip install ta-lib && \
+cd .. && \
+rm -rf ta-lib/ ta-lib-0.4.0-src.tar.gz && \
+source deactivate"]
+
+# Python for Humans
+# records
+# requirements
+# http requests
